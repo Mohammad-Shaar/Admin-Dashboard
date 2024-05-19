@@ -45,7 +45,9 @@ export const StoreModal = () => {
 
       const response = await axios.post("/api/stores", values);
 
-      toast.success("Store created");
+      // we didn't use the router from next.js, to be sure that the store 100% stored in the db
+      // by the window that will refresh the page 'better UX'
+      window.location.assign(`/${response.data.id}`);
     } catch (err) {
       toast.error("Something went wrong!");
     } finally {
